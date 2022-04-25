@@ -3,11 +3,14 @@ package com.example.cloudbank;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,7 +24,10 @@ public class CreateTransaction extends AppCompatActivity {
     Spinner beneficiaries_spinner;
     TextView beneficiary_number, beneficiary_selname;
     DatabaseHelper db;
+    EditText amount_field;
     ArrayList<String> beneficiary_id, beneficiary_account_id, beneficiary_name, beneficiary_create_at;
+    String beneficiary_selected;
+    Button create_transaction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +42,7 @@ public class CreateTransaction extends AppCompatActivity {
         beneficiary_create_at = new ArrayList<>();
         getDataArrays();
 
+        amount_field = findViewById(R.id.amount_field);
         beneficiaries_spinner = findViewById(R.id.beneficiaries_spinner);
         beneficiary_number = findViewById(R.id.beneficiary_number);
         beneficiary_selname = findViewById(R.id.beneficiary_selname);
@@ -51,10 +58,23 @@ public class CreateTransaction extends AppCompatActivity {
                 Toast.makeText(parent.getContext(), "Selected: " + BeneficiaryName, Toast.LENGTH_LONG).show();
                 beneficiary_number.setText(beneficiary_account_id.get(position).toString());
                 beneficiary_selname.setText(beneficiary_name.get(position).toString());
+                beneficiary_selected = beneficiary_id.get(position).toString();
             }
 
             @Override
             public void onNothingSelected(AdapterView <?> parent) {
+            }
+        });
+
+        create_transaction = findViewById(R.id.create_transaction);
+        create_transaction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatabaseHelper myDB = new DatabaseHelper(CreateTransaction.this);
+                myDB.addTransaction("admin", "testmotif", beneficiary_selected.toString().trim(), Integer.parseInt(amount_field.getText().toString()));
+
+                // Intent intent = new Intent(CreateTransaction.this, TransactionSuccess.class);
+                // startActivity(intent);
             }
         });
     }

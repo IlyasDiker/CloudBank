@@ -87,6 +87,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    public void addTransaction(String accountid, String description, String recipient_id, int amount){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String strDate = sdf.format(new Date());
+        String strDateExpire = sdf.format(new Date().getTime() + 7 * 24 * 60 * 60 * 1000);
+
+
+        cv.put(COLUMN_TRANSACTION_ACCOUNT_ID, accountid);
+        cv.put(COLUMN_TRANSACTION_DESCRIPTION, description);
+        cv.put(COLUMN_BENEFICIARY_CREATED_AT, strDate);
+        cv.put(COLUMN_TRANSACTION_EXPIRE_AT, strDateExpire);
+        cv.put(COLUMN_TRANSACTION_AMOUNT, amount);
+        cv.put(COLUMN_TRANSACTION_RECIPIENT, recipient_id);
+        long result = db.insert(TABLE_NAME_TRANSACTIONS, null, cv);
+        if (result == -1){
+            Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "Transacation Created Successfully", Toast.LENGTH_SHORT).show();
+        }
+    }
+
     Cursor readAllBeneficiaries() {
         String query = "SELECT * FROM " + TABLE_NAME_BENEFICIARIES;
         SQLiteDatabase db = this.getReadableDatabase();

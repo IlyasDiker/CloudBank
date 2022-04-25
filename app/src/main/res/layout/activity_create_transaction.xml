@@ -159,7 +159,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/create_transaction"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:text="Send"

@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Cloud Bank</string>
+    <string name="auth_username">admin</string>
+    <string name="auth_password">admin</string>
+
+    <string name="create_transaction">Create Transaction</string>
+    <string name="create_beneficiary">Create Beneficiary</string>
+    <string name="title_activity_home">Home</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="transactions_history">Transactions history</string>
+</resources>

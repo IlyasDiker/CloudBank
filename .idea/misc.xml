@@ -4,11 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Ilyas/AndroidStudioProjects/CloudBank/app/src/main/res/drawable/add_icon.xml" value="0.22" />
+        <entry key="..\:/Users/Ilyas/AndroidStudioProjects/CloudBank/app/src/main/res/layout/activity_beneficiary_list.xml" value="0.33" />
         <entry key="..\:/Users/Ilyas/AndroidStudioProjects/CloudBank/app/src/main/res/layout/activity_create_beneficiary.xml" value="0.26197916666666665" />
         <entry key="..\:/Users/Ilyas/AndroidStudioProjects/CloudBank/app/src/main/res/layout/activity_create_transaction.xml" value="0.33" />
         <entry key="..\:/Users/Ilyas/AndroidStudioProjects/CloudBank/app/src/main/res/layout/activity_home.xml" value="0.27807971014492755" />
         <entry key="..\:/Users/Ilyas/AndroidStudioProjects/CloudBank/app/src/main/res/layout/activity_main.xml" value="0.26197916666666665" />
         <entry key="..\:/Users/Ilyas/AndroidStudioProjects/CloudBank/app/src/main/res/layout/activity_menu.xml" value="0.27063740856844304" />
+        <entry key="..\:/Users/Ilyas/AndroidStudioProjects/CloudBank/app/src/main/res/layout/beneficiary_row.xml" value="0.5" />
         <entry key="..\:/Users/Ilyas/AndroidStudioProjects/CloudBank/app/src/main/res/layout/fragment_dashboard.xml" value="0.27807971014492755" />
         <entry key="..\:/Users/Ilyas/AndroidStudioProjects/CloudBank/app/src/main/res/layout/fragment_home.xml" value="0.27807971014492755" />
         <entry key="..\:/Users/Ilyas/AndroidStudioProjects/CloudBank/app/src/main/res/layout/fragment_notifications.xml" value="0.27807971014492755" />

@@ -10,4 +10,5 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="transactions_history">Transactions history</string>
+    <string name="beneficiary_list">Beneficiaries List</string>
 </resources>

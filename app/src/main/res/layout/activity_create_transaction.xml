@@ -75,7 +75,7 @@
                     android:text="Beneficiary" />
 
                 <Spinner
-                    android:id="@+id/spinner2"
+                    android:id="@+id/beneficiaries_spinner"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:spinnerMode="dialog" />
@@ -131,7 +131,7 @@
                                 android:textSize="8sp" />
 
                             <TextView
-                                android:id="@+id/beneficiary_name"
+                                android:id="@+id/beneficiary_selname"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:textSize="16sp" />

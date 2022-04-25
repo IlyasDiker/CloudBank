@@ -1,52 +1,44 @@
 package com.example.cloudbank;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
-public class Menu extends AppCompatActivity {
-
-    FloatingActionButton add_button;
-    Button beneficiaries_btn;
+public class BeneficiaryList extends AppCompatActivity {
 
     DatabaseHelper db;
+    FloatingActionButton add_beneficiary_button;
     ArrayList<String> beneficiary_id, beneficiary_account_id, beneficiary_name, beneficiary_create_at;
-
+    RecyclerView beneficiaries_recycler;
+    BeneficiaryAdapter beneficiaryAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu);
+        setContentView(R.layout.activity_beneficiary_list);
 
-        beneficiaries_btn = findViewById(R.id.beneficiaries_btn);
-        beneficiaries_btn.setOnClickListener(new View.OnClickListener() {
+        add_beneficiary_button = findViewById(R.id.add_beneficiary_button);
+        add_beneficiary_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Menu.this, BeneficiaryList.class);
+                Intent intent = new Intent(BeneficiaryList.this, CreateBeneficiary.class);
                 startActivity(intent);
             }
         });
 
-        add_button = findViewById(R.id.add_button);
-        add_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Menu.this, CreateTransaction.class);
-                startActivity(intent);
-            }
-        });
+        beneficiaries_recycler = findViewById(R.id.beneficiaries_recycler);
 
-        db = new DatabaseHelper(Menu.this);
+        db = new DatabaseHelper(BeneficiaryList.this);
         beneficiary_id = new ArrayList<>();
         beneficiary_account_id = new ArrayList<>();
         beneficiary_name = new ArrayList<>();
@@ -54,6 +46,9 @@ public class Menu extends AppCompatActivity {
 
         getDataArrays();
 
+        beneficiaryAdapter = new BeneficiaryAdapter(BeneficiaryList.this, beneficiary_name, beneficiary_account_id);
+        beneficiaries_recycler.setAdapter(beneficiaryAdapter);
+        beneficiaries_recycler.setLayoutManager( new LinearLayoutManager(BeneficiaryList.this));
     }
 
     void getDataArrays(){

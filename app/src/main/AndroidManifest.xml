@@ -10,10 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CloudBank">
         <activity
+            android:name=".BeneficiaryList"
+            android:label="@string/beneficiary_list"
+            android:parentActivityName=".Menu"
+            android:exported="false" />
+        <activity
             android:name=".CreateBeneficiary"
             android:exported="false"
             android:label="@string/create_beneficiary"
-            android:parentActivityName=".Menu" />
+            android:parentActivityName=".BeneficiaryList" />
         <activity
             android:name=".CreateTransaction"
             android:exported="false"

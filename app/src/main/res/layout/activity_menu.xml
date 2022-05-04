@@ -34,7 +34,7 @@
                     app:icon="@drawable/ic_baseline_people_24" />
 
                 <Button
-                    android:id="@+id/button4"
+                    android:id="@+id/agencies_btn"
                     android:layout_width="match_parent"
                     android:layout_height="67dp"
                     android:text="Agencies"

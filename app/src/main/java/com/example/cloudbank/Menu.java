@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class Menu extends AppCompatActivity {
 
     FloatingActionButton add_button;
-    Button beneficiaries_btn;
+    Button beneficiaries_btn, agencies_btn;
 
     DatabaseHelper db;
     ArrayList<String> beneficiary_id, beneficiary_account_id, beneficiary_name, beneficiary_create_at;
@@ -29,6 +29,15 @@ public class Menu extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
 
         beneficiaries_btn = findViewById(R.id.beneficiaries_btn);
+        beneficiaries_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Menu.this, BeneficiaryList.class);
+                startActivity(intent);
+            }
+        });
+
+        agencies_btn = findViewById(R.id.agencies_btn);
         beneficiaries_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

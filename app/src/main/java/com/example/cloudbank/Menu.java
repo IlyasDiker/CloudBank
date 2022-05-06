@@ -38,10 +38,10 @@ public class Menu extends AppCompatActivity {
         });
 
         agencies_btn = findViewById(R.id.agencies_btn);
-        beneficiaries_btn.setOnClickListener(new View.OnClickListener() {
+        agencies_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Menu.this, BeneficiaryList.class);
+                Intent intent = new Intent(Menu.this, MapsActivity.class);
                 startActivity(intent);
             }
         });

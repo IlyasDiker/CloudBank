@@ -46,7 +46,7 @@ public class BeneficiaryList extends AppCompatActivity {
 
         getDataArrays();
 
-        beneficiaryAdapter = new BeneficiaryAdapter(BeneficiaryList.this, beneficiary_name, beneficiary_account_id);
+        beneficiaryAdapter = new BeneficiaryAdapter(BeneficiaryList.this, beneficiary_id, beneficiary_name, beneficiary_account_id);
         beneficiaries_recycler.setAdapter(beneficiaryAdapter);
         beneficiaries_recycler.setLayoutManager( new LinearLayoutManager(BeneficiaryList.this));
     }

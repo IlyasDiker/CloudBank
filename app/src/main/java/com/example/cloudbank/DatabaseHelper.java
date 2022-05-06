@@ -87,6 +87,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    public void removeBeneficiary(String accountid){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        long result = db.delete(TABLE_NAME_BENEFICIARIES, COLUMN_BENEFICIARY_ID+"=?", new String[]{String.valueOf(accountid)});
+        if (result == -1){
+            Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "Benficiary Removed", Toast.LENGTH_SHORT).show();
+        }
+    }
+
     public void addTransaction(String accountid, String description, String recipient_id, int amount){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -108,6 +119,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             Toast.makeText(context, "Transacation Created Successfully", Toast.LENGTH_SHORT).show();
         }
     }
+
 
     Cursor readAllBeneficiaries() {
         String query = "SELECT * FROM " + TABLE_NAME_BENEFICIARIES;

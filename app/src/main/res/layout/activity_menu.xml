@@ -53,8 +53,10 @@
                 android:text="@string/transactions_history" />
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/transactions_recycler"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:paddingBottom="100dp" />
         </LinearLayout>
     </ScrollView>
 

@@ -24,7 +24,7 @@ public class CreateTransaction extends AppCompatActivity {
     Spinner beneficiaries_spinner;
     TextView beneficiary_number, beneficiary_selname;
     DatabaseHelper db;
-    EditText amount_field;
+    EditText amount_field, motif_field;
     ArrayList<String> beneficiary_id, beneficiary_account_id, beneficiary_name, beneficiary_create_at;
     String beneficiary_selected;
     Button create_transaction;
@@ -43,6 +43,7 @@ public class CreateTransaction extends AppCompatActivity {
         getDataArrays();
 
         amount_field = findViewById(R.id.amount_field);
+        motif_field = findViewById(R.id.motif_field);
         beneficiaries_spinner = findViewById(R.id.beneficiaries_spinner);
         beneficiary_number = findViewById(R.id.beneficiary_number);
         beneficiary_selname = findViewById(R.id.beneficiary_selname);
@@ -54,8 +55,8 @@ public class CreateTransaction extends AppCompatActivity {
         beneficiaries_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String BeneficiaryName = parent.getItemAtPosition(position).toString();
-                Toast.makeText(parent.getContext(), "Selected: " + BeneficiaryName, Toast.LENGTH_LONG).show();
+                // String BeneficiaryName = parent.getItemAtPosition(position).toString();
+                // Toast.makeText(parent.getContext(), "Selected: " + BeneficiaryName, Toast.LENGTH_LONG).show();
                 beneficiary_number.setText(beneficiary_account_id.get(position).toString());
                 beneficiary_selname.setText(beneficiary_name.get(position).toString());
                 beneficiary_selected = beneficiary_id.get(position).toString();
@@ -70,8 +71,10 @@ public class CreateTransaction extends AppCompatActivity {
         create_transaction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String motif = motif_field.getText().toString().trim();
+
                 DatabaseHelper myDB = new DatabaseHelper(CreateTransaction.this);
-                myDB.addTransaction("admin", "testmotif", beneficiary_selected.toString().trim(), Integer.parseInt(amount_field.getText().toString()));
+                myDB.addTransaction("admin", motif, beneficiary_selected.toString().trim(), Integer.parseInt(amount_field.getText().toString()));
 
                 // Intent intent = new Intent(CreateTransaction.this, TransactionSuccess.class);
                 // startActivity(intent);

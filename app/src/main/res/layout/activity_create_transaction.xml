@@ -84,6 +84,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="17dp" />
 
+                <EditText
+                    android:id="@+id/motif_field"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Motif"
+                    android:inputType="textPersonName" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="17dp" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

@@ -1,7 +1,6 @@
 package com.example.cloudbank;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,8 +64,8 @@ public class BeneficiaryAdapter extends RecyclerView.Adapter<BeneficiaryAdapter.
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            beneficiary_row_name = itemView.findViewById(R.id.beneficiary_row_name);
-            beneficiary_row_account_id = itemView.findViewById(R.id.beneficiary_row_account_id);
+            beneficiary_row_name = itemView.findViewById(R.id.transaction_recipient);
+            beneficiary_row_account_id = itemView.findViewById(R.id.transaction_row_account_id);
             delete_button = itemView.findViewById(R.id.delete_button);
 
         }

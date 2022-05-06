@@ -131,4 +131,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return cursor;
     }
+
+    Cursor readAllTransactions() {
+        String query = "SELECT * FROM " + TABLE_NAME_TRANSACTIONS + " t JOIN " + TABLE_NAME_BENEFICIARIES + " b ON t."+COLUMN_TRANSACTION_RECIPIENT+" = b."+COLUMN_BENEFICIARY_ID;
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = null;
+        if(db != null){
+            cursor = db.rawQuery(query, null);
+        }
+        return cursor;
+    }
 }

@@ -1,6 +1,8 @@
 package com.example.cloudbank;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -18,10 +20,11 @@ public class Menu extends AppCompatActivity {
 
     FloatingActionButton add_button;
     Button beneficiaries_btn, agencies_btn;
-
+    RecyclerView transactions_recycler;
     DatabaseHelper db;
-    ArrayList<String> beneficiary_id, beneficiary_account_id, beneficiary_name, beneficiary_create_at;
+    ArrayList<String> transaction_id, transaction_account_id, transaction_description, transaction_created_at, transaction_amount;
 
+    TransactionAdapter transactionAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,26 +58,33 @@ public class Menu extends AppCompatActivity {
             }
         });
 
+        transactions_recycler = findViewById(R.id.transactions_recycler);
+
         db = new DatabaseHelper(Menu.this);
-        beneficiary_id = new ArrayList<>();
-        beneficiary_account_id = new ArrayList<>();
-        beneficiary_name = new ArrayList<>();
-        beneficiary_create_at = new ArrayList<>();
+        transaction_id = new ArrayList<>();
+        transaction_account_id = new ArrayList<>();
+        transaction_description = new ArrayList<>();
+        transaction_amount = new ArrayList<>();
+        transaction_created_at = new ArrayList<>();
 
         getDataArrays();
 
+        transactionAdapter = new TransactionAdapter(Menu.this, transaction_id, transaction_account_id, transaction_description, transaction_amount, transaction_created_at);
+        transactions_recycler.setAdapter(transactionAdapter);
+        transactions_recycler.setLayoutManager( new LinearLayoutManager(Menu.this));
     }
 
     void getDataArrays(){
-        Cursor cursor = db.readAllBeneficiaries();
+        Cursor cursor = db.readAllTransactions();
         if(cursor.getCount() == 0) {
             Toast.makeText(this, "No data.", Toast.LENGTH_LONG).show();
         } else {
             while (cursor.moveToNext()){
-                beneficiary_id.add(cursor.getString((0)));
-                beneficiary_account_id.add(cursor.getString(1));
-                beneficiary_name.add(cursor.getString(2));
-                beneficiary_create_at.add(cursor.getString(3));
+                transaction_id.add(cursor.getString((0)));
+                transaction_account_id.add(cursor.getString(9));
+                transaction_description.add(cursor.getString(2));
+                transaction_created_at.add(cursor.getString(3));
+                transaction_amount.add(cursor.getString(5));
             }
         }
     }

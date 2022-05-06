@@ -45,14 +45,16 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/delete_button"
-                    android:layout_width="56dp"
+                <TextView
+                    android:id="@+id/transaction_amount"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    app:icon="@drawable/ic_baseline_delete_24" />
+                    android:text="TextView"
+                    android:textSize="24sp" />
             </LinearLayout>
 
         </LinearLayout>
